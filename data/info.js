@@ -5,16 +5,16 @@
 
 const INFO_SEKOLAH = {
   nama:         "SD Negeri Banjarsari",
-  npsn:         "",                         // isi NPSN
+  npsn:         "20502407",                         // isi NPSN
   alamat:       "Banjarsari, Kec. Buduran, Kabupaten Sidoarjo, Jawa Timur 61252",
   kecamatan:    "Buduran",
   kabupaten:    "Sidoarjo",
   provinsi:     "Jawa Timur",
   kode_pos:     "61252",
   telp:         "",                         // isi nomor telepon/WA
-  email:        "",                         // isi email sekolah
-  tahun_berdiri:"",                         // isi tahun berdiri
-  akreditasi:   "A",                        // isi akreditasi: A / B / C
+  email:        "sdnbanjarsari55@gmail.com",                         // isi email sekolah
+  tahun_berdiri:"1970",                         // isi tahun berdiri
+  akreditasi:   "B",                        // isi akreditasi: A / B / C
   status:       "Negeri",
 };
 
