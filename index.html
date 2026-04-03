@@ -207,7 +207,6 @@
 <div class="mob-menu" id="mob-menu">
   <button onclick="showPage('beranda');toggleMenu()">🏠 Beranda</button>
   <button onclick="showPage('profil');toggleMenu()">📋 Profil Sekolah</button>
-  <button onclick="showPage('daftar');toggleMenu()">📝 Pendaftaran</button>
   <button onclick="showPage('alumni');toggleMenu()">🎓 Alumni</button>
 </div>
 
@@ -296,55 +295,6 @@
   </div>
   <footer><strong id="ft2-nama">SD Negeri Banjarsari</strong><br/><span id="ft2-alamat"></span><br/><br/>© <span class="yr-f"></span> SDN Banjarsari.</footer>
 </div>
-
-
-<!-- ── PENDAFTARAN ────────────────────────────── -->
-<div class="page" id="page-daftar">
-  <div class="pg-hero"><h1>Pendaftaran Online</h1><p>Penerimaan Peserta Didik Baru SDN Banjarsari</p></div>
-  <div class="daft-wrap">
-    <div class="daft-info">
-      <div style="font-size:1.5rem;flex-shrink:0">ℹ️</div>
-      <div><h4>Cara Pendaftaran</h4><p>Isi formulir di bawah ini dengan lengkap dan benar. Setelah mengirim, pihak sekolah akan menghubungi Anda melalui nomor WhatsApp yang dicantumkan dalam waktu 1–3 hari kerja.</p></div>
-    </div>
-    <div class="form-card" id="form-section">
-      <div class="fsec-title">Data Calon Siswa</div>
-      <div class="frow">
-        <div class="fg"><label>Nama Lengkap <span>*</span></label><input type="text" class="fc" id="f-nama" placeholder="Nama lengkap siswa"/></div>
-        <div class="fg"><label>Jenis Kelamin <span>*</span></label><select class="fc" id="f-jk"><option value="">Pilih...</option><option>Laki-laki</option><option>Perempuan</option></select></div>
-      </div>
-      <div class="frow">
-        <div class="fg"><label>Tempat Lahir <span>*</span></label><input type="text" class="fc" id="f-kota" placeholder="Kota lahir"/></div>
-        <div class="fg"><label>Tanggal Lahir <span>*</span></label><input type="date" class="fc" id="f-tgl"/></div>
-      </div>
-      <div class="fg"><label>Alamat Lengkap <span>*</span></label><textarea class="fc" id="f-alamat" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan..."></textarea></div>
-      <div class="frow">
-        <div class="fg"><label>Asal TK / PAUD</label><input type="text" class="fc" id="f-tk" placeholder="Opsional"/></div>
-        <div class="fg"><label>Tahun Masuk <span>*</span></label><select class="fc" id="f-tahun"><option value="">Pilih...</option><option>2025/2026</option><option>2026/2027</option></select></div>
-      </div>
-      <div class="fsec-title">Data Orang Tua / Wali</div>
-      <div class="frow">
-        <div class="fg"><label>Nama Orang Tua / Wali <span>*</span></label><input type="text" class="fc" id="f-ortu" placeholder="Nama lengkap"/></div>
-        <div class="fg"><label>No. HP / WhatsApp <span>*</span></label><input type="tel" class="fc" id="f-hp" placeholder="08xxxxxxxxxx"/></div>
-      </div>
-      <div class="fg"><label>Pekerjaan</label><input type="text" class="fc" id="f-kerja" placeholder="Opsional"/></div>
-      <div class="fsec-title">Catatan Tambahan</div>
-      <div class="fg"><label>Catatan / Pertanyaan</label><textarea class="fc" id="f-catatan" placeholder="Opsional"></textarea></div>
-      <button class="sub-btn" onclick="submitForm()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-        Kirim Pendaftaran
-      </button>
-      <p class="form-note">⚠️ Setelah mengirim, pihak sekolah akan menghubungi nomor WhatsApp yang dicantumkan.</p>
-    </div>
-    <div class="ok-screen" id="ok-section">
-      <div class="ok-icon">✅</div>
-      <h3>Pendaftaran Terkirim!</h3>
-      <p>Terima kasih! Pihak sekolah akan menghubungi Anda melalui WhatsApp dalam 1–3 hari kerja.</p>
-      <button class="btn-p" onclick="resetForm()">Daftar Lagi</button>
-    </div>
-  </div>
-  <footer><strong>SD Negeri Banjarsari</strong><br/><br/>© <span class="yr-f"></span> SDN Banjarsari.</footer>
-</div>
-
 
 <!-- ── ALUMNI ──────────────────────────────────── -->
 <div class="page" id="page-alumni">
