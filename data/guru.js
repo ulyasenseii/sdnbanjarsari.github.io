@@ -19,6 +19,9 @@ const GURU = [
   { nama: "Isi Nama Guru Kelas 6",     jabatan: "Wali Kelas 6"   },
   { nama: "Isi Nama Guru PAI",         jabatan: "Guru Agama Islam"},
   { nama: "Isi Nama Guru PJOK",        jabatan: "Guru Olahraga"  },
+  { nama: "Isi Nama Guru BTQ",        jabatan: "Guru BTQ"  },
+  { nama: "Isi Nama Guru Bahasa Inggris",        jabatan: "Guru Bahasa Inggris"  },
+  { nama: "Isi Nama Penjaga Sekolah",        jabatan: "Penjaga Sekolah"  },
   // Tambah baris baru di sini kalau ada guru/staff baru:
   // { nama: "Nama Guru Baru", jabatan: "Jabatannya" },
 ];
