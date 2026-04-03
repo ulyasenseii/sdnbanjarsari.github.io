@@ -5,7 +5,7 @@
 
 const INFO_SEKOLAH = {
   nama:         "SD Negeri Banjarsari",
-  npsn:         "20502407",                         // isi NPSN
+  npsn:         "20502407",                        
   alamat:       "Banjarsari, Kec. Buduran, Kabupaten Sidoarjo, Jawa Timur 61252",
   kecamatan:    "Buduran",
   kabupaten:    "Sidoarjo",
