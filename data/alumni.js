@@ -18,7 +18,7 @@
 
 const ALUMNI = [
 
-  // ── ANGKATAN 2024 ─────────────────────────────────
+  // ── ANGKATAN 2025 ─────────────────────────────────
   { nama: "Andi Firmansyah",  tahun: 2024, smp: "SMP Negeri 1 Buduran",  prestasi: ["Juara 1 Olimpiade Matematika Kecamatan", "Siswa Teladan 2024"] },
   { nama: "Siti Nuraini",     tahun: 2024, smp: "SMP Negeri 2 Sidoarjo", prestasi: ["Juara 2 Lomba Baca Puisi Kabupaten"] },
   { nama: "Rizky Pratama",    tahun: 2024, smp: "MTs Al-Hidayah",        prestasi: [] },
@@ -34,6 +34,12 @@ const ALUMNI = [
 
   // ── ANGKATAN 2021 ─────────────────────────────────
   { nama: "Nurul Hidayah",    tahun: 2021, smp: "SMP Negeri 3 Sidoarjo", prestasi: ["Juara 1 Olimpiade Bahasa Indonesia"] },
-
+  // ── Angkatan anomali ─────────────────────────────────
+   { nama: "cacaa", tahun: 2025, smp: "SMP 1 buduran", prestasi: ["vdd"] },
+  { nama: "ilham", tahun: 2025, smp: "SMP 1 buduran", prestasi: ["dvsd"] },
+  { nama: "oden", tahun: 2025, smp: "SMP 1 buduran", prestasi: ["dsdf"] },
+  { nama: "dvsd", tahun: 2025, smp: "smp 1 sidaoarj", prestasi: ["fdsdf"] },
+  { nama: "", tahun: 2025, smp: "sj", prestasi: ["dfd"] },
+  { nama: "dfs", tahun: 2025, smp: "j", prestasi: ["sasd"] },
   // Tambah angkatan baru di atas baris ini 👆
 ];
