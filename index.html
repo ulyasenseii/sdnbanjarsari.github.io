@@ -59,7 +59,18 @@
     .hero h1 { font-family: 'Lora', serif; font-size: clamp(2rem,5.5vw,3.5rem); color: var(--cream); line-height: 1.15; position: relative; margin-bottom: .75rem; }
     .hero h1 em { font-style: italic; color: var(--gold-light); }
     .hero-sub { color: rgba(255,248,240,.7); font-size: 1rem; position: relative; max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.65; }
-    .hero-addr { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); color: rgba(255,248,240,.6); font-size: .78rem; padding: .45rem 1rem; border-radius: 100px; position: relative; }
+
+    /* Alamat — bisa diklik ke Google Maps */
+    .hero-addr {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,248,240,.6); font-size: .78rem; padding: .45rem 1rem;
+      border-radius: 100px; position: relative;
+      text-decoration: none; cursor: pointer;
+      transition: var(--t);
+    }
+    .hero-addr:hover { background: rgba(255,255,255,.14); color: rgba(255,248,240,.9); border-color: rgba(255,255,255,.25); }
+
     .hero-cta { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.75rem; position: relative; }
     .btn-p { background: var(--gold); color: var(--dark); border: none; padding: .75rem 1.75rem; border-radius: 10px; font-size: .88rem; font-weight: 700; cursor: pointer; transition: var(--t); box-shadow: 0 4px 16px rgba(192,133,82,.4); }
     .btn-p:hover { background: var(--gold-light); transform: translateY(-2px); }
@@ -120,10 +131,19 @@
     .misi-list li { display: flex; gap: .75rem; padding: .6rem 0; border-bottom: 1px solid rgba(192,133,82,.1); font-size: .86rem; line-height: 1.6; }
     .misi-list li:last-child { border-bottom: none; }
     .misi-n { min-width: 24px; height: 24px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: var(--dark); flex-shrink: 0; margin-top: .1rem; }
+
+    /* ── GURU CARDS ── */
     .guru-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px,1fr)); gap: 1rem; margin-top: 2rem; }
-    .guru-card { background: var(--white); border-radius: var(--r); padding: 1.25rem; text-align: center; border: 1px solid rgba(192,133,82,.15); box-shadow: var(--s1); }
-    .guru-av { width: 52px; height: 52px; background: var(--gold-pale); border-radius: 50%; margin: 0 auto .75rem; display: flex; align-items: center; justify-content: center; font-family: 'Lora', serif; font-size: 1.1rem; color: var(--brown); font-weight: 700; }
-    .guru-card h4 { font-size: .84rem; font-weight: 600; margin-bottom: .2rem; }
+    .guru-card { background: var(--white); border-radius: var(--r); padding: 1.25rem; text-align: center; border: 1px solid rgba(192,133,82,.15); box-shadow: var(--s1); transition: var(--t); }
+    .guru-card:hover { transform: translateY(-3px); box-shadow: var(--s2); }
+
+    /* foto bulat */
+    .guru-foto-wrap { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto .85rem; overflow: hidden; border: 3px solid var(--gold-pale); flex-shrink: 0; }
+    .guru-foto { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* fallback inisial (muncul kalau foto tidak ada) */
+    .guru-av { width: 72px; height: 72px; background: var(--gold-pale); border-radius: 50%; margin: 0 auto .85rem; display: flex; align-items: center; justify-content: center; font-family: 'Lora', serif; font-size: 1.3rem; color: var(--brown); font-weight: 700; border: 3px solid var(--gold-pale); }
+
+    .guru-card h4 { font-size: .84rem; font-weight: 600; margin-bottom: .25rem; color: var(--dark); }
     .guru-card p { font-size: .74rem; color: var(--brown); }
 
     /* ── ALUMNI ── */
@@ -155,10 +175,10 @@
     /* ── POPUP ── */
     .popup-overlay { display: none; position: fixed; inset: 0; background: rgba(75,46,43,.55); z-index: 9998; }
     .popup-overlay.show { display: block; }
-    .popup-box { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; background: var(--cream); border-radius: 20px; padding: 2.5rem 2rem; max-width: 360px; width: 90%; text-align: center; box-shadow: 0 24px 64px rgba(75,46,43,.35); }
+    .popup-box { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 9999; background: var(--cream); border-radius: 20px; padding: 2.5rem 2rem; max-width: 360px; width: 90%; text-align: center; box-shadow: 0 24px 64px rgba(75,46,43,.35); }
     .popup-box.show { display: block; }
     .popup-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .popup-title { font-family: 'Lora', serif; font-size: 1.25rem; font-weight: 600; color: var(--dark); margin-bottom: .6rem; }
+    .popup-title { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--dark); margin-bottom: .6rem; }
     .popup-desc { font-size: .85rem; color: var(--soft); line-height: 1.65; margin-bottom: 1.75rem; }
     .popup-btn { background: var(--dark); color: var(--cream); border: none; padding: .75rem 2rem; border-radius: 10px; font-size: .88rem; font-weight: 600; cursor: pointer; transition: var(--t); }
     .popup-btn:hover { background: var(--brown); }
@@ -214,17 +234,17 @@
   <button onclick="showPage('alumni');toggleMenu()">🎓 Alumni</button>
 </div>
 
-<!-- POPUP PENDAFTARAN DITUTUP -->
+<!-- POPUP PENDAFTARAN -->
 <div class="popup-overlay" id="popup-overlay" onclick="tutupPopup()"></div>
 <div class="popup-box" id="popup-box">
   <div class="popup-icon">📋</div>
   <div class="popup-title">Pendaftaran Belum Dibuka</div>
-  <p class="popup-desc">Formulir pendaftaran online belum tersedia saat ini. Silakan hubungi pihak sekolah untuk informasi lebih lanjut.</p>
+  <p class="popup-desc">Formulir pendaftaran online belum tersedia saat ini atau sudah ditutup. Silakan hubungi pihak sekolah untuk informasi lebih lanjut.</p>
   <button class="popup-btn" onclick="tutupPopup()">Oke, Mengerti</button>
 </div>
 
 
-<!-- PAGE: BERANDA -->
+<!-- ══ PAGE: BERANDA ══ -->
 <div class="page active" id="page-beranda">
   <section class="hero">
     <div class="hero-pat"></div>
@@ -233,10 +253,14 @@
     <div class="hero-badge">Sekolah Dasar Negeri</div>
     <h1>Selamat Datang di<br/><em id="hero-nama">SDN Banjarsari</em></h1>
     <p class="hero-sub">Membentuk generasi yang cerdas, berkarakter, dan berdaya saing di lingkungan yang penuh kasih.</p>
-    <div class="hero-addr">
+
+    <!-- Alamat — klik buka Google Maps -->
+    <a class="hero-addr" href="https://maps.app.goo.gl/Lksod7Zqxxc5s6NcA" target="_blank" rel="noopener">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <span id="hero-alamat">Banjarsari, Kec. Buduran, Kabupaten Sidoarjo, Jawa Timur</span>
-    </div>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.6"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+
     <div class="hero-cta">
       <button class="btn-p" onclick="bukaPendaftaran()">📝 Daftar Sekarang</button>
       <button class="btn-o" onclick="showPage('profil')">Profil Sekolah →</button>
@@ -295,7 +319,7 @@
 </div>
 
 
-<!-- PAGE: PROFIL -->
+<!-- ══ PAGE: PROFIL ══ -->
 <div class="page" id="page-profil">
   <div class="pg-hero"><h1>Profil Sekolah</h1><p>Mengenal lebih dekat SD Negeri Banjarsari</p></div>
   <div class="sec">
@@ -321,6 +345,7 @@
       <div class="p-card full"><h3>🎯 Misi</h3><ul class="misi-list" id="pi-misi"></ul></div>
       <div class="p-card full"><h3>📜 Sejarah Singkat</h3><p id="pi-sejarah" style="font-size:.87rem;line-height:1.75;color:var(--soft)">–</p></div>
     </div>
+
     <div style="margin-top:3rem">
       <div class="sec-lbl">Sumber Daya Manusia</div>
       <h2 class="sec-title">Guru & Tenaga Kependidikan</h2>
@@ -335,7 +360,7 @@
 </div>
 
 
-<!-- PAGE: ALUMNI -->
+<!-- ══ PAGE: ALUMNI ══ -->
 <div class="page" id="page-alumni">
   <div class="pg-hero"><h1>Data Alumni</h1><p>Jejak langkah lulusan SDN Banjarsari</p></div>
   <div class="al-wrap">
@@ -357,26 +382,28 @@
 </div>
 
 
-<!-- DATA FILES — urutan penting, jangan diubah -->
+<!-- DATA FILES -->
 <script src="data/info.js"></script>
 <script src="data/guru.js"></script>
 <script src="data/alumni.js"></script>
 
 <script>
   // ════════════════════════════════════════════════
-  // LINK GOOGLE FORM PENDAFTARAN
-  // Kalau pendaftaran dibuka: isi linknya di sini
-  // Kalau pendaftaran ditutup: biarkan null
+  // LINK PENDAFTARAN
+  // Ada link → langsung redirect ke link tersebut
+  // Kosong (null) → muncul popup "belum dibuka"
   // ════════════════════════════════════════════════
-  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeBXUFjjoFLmPHU4ygrYAars85RB5pOZ5P4aMZMyy4y6a5HpQ/viewform?usp=header";
+  const LINK_PENDAFTARAN = null;
+  // Contoh kalau ada link:
+  // const LINK_PENDAFTARAN = "https://ppdb.sidoarjokab.go.id/...";
 
   // ════════════════════════════════════════════════
   // JANGAN EDIT DI BAWAH INI
   // ════════════════════════════════════════════════
 
   function bukaPendaftaran() {
-    if (GOOGLE_FORM_URL) {
-      window.open(GOOGLE_FORM_URL, '_blank');
+    if (LINK_PENDAFTARAN) {
+      window.open(LINK_PENDAFTARAN, '_blank');
     } else {
       document.getElementById('popup-overlay').classList.add('show');
       document.getElementById('popup-box').classList.add('show');
@@ -388,13 +415,10 @@
     document.getElementById('popup-box').classList.remove('show');
   }
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') tutupPopup();
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') tutupPopup(); });
 
   document.addEventListener('DOMContentLoaded', () => {
-    const yr = new Date().getFullYear();
-    document.querySelectorAll('.yr-f').forEach(el => el.textContent = yr);
+    document.querySelectorAll('.yr-f').forEach(el => el.textContent = new Date().getFullYear());
     fillInfo();
     fillGuru();
     fillAlumniFilters();
@@ -403,44 +427,42 @@
 
   function fillInfo() {
     const I = INFO_SEKOLAH;
-    document.getElementById('hero-nama').textContent   = I.nama;
-    document.getElementById('hero-alamat').textContent = I.alamat;
-    document.getElementById('s-akred').textContent     = I.akreditasi || '–';
-    document.getElementById('ft-nama').textContent     = I.nama;
-    document.getElementById('ft-alamat').textContent   = I.alamat;
+    document.getElementById('hero-nama').textContent    = I.nama;
+    document.getElementById('hero-alamat').textContent  = I.alamat;
+    document.getElementById('s-akred').textContent      = I.akreditasi || '–';
+    document.getElementById('ft-nama').textContent      = I.nama;
+    document.getElementById('ft-alamat').textContent    = I.alamat;
 
     const years = [...new Set(ALUMNI.map(a => a.tahun))];
     const smps  = [...new Set(ALUMNI.map(a => a.smp))];
-    document.getElementById('s-alumni').textContent   = ALUMNI.length;
-    document.getElementById('s-angkatan').textContent = years.length;
-    document.getElementById('s-smp').textContent      = smps.length;
+    document.getElementById('s-alumni').textContent    = ALUMNI.length;
+    document.getElementById('s-angkatan').textContent  = years.length;
+    document.getElementById('s-smp').textContent       = smps.length;
 
-    document.getElementById('pi-nama').textContent   = I.nama            || '–';
-    document.getElementById('pi-npsn').textContent   = I.npsn            || '(belum diisi)';
-    document.getElementById('pi-alamat').textContent = I.alamat          || '–';
-    document.getElementById('pi-tahun').textContent  = I.tahun_berdiri   || '(belum diisi)';
-    document.getElementById('pi-akred').textContent  = I.akreditasi      || '(belum diisi)';
-    document.getElementById('pi-status').textContent = I.status          || '–';
-    document.getElementById('pi-telp').textContent   = I.telp            || '(belum diisi)';
-    document.getElementById('pi-email').textContent  = I.email           || '(belum diisi)';
-    document.getElementById('pi-kec').textContent    = I.kecamatan       || '–';
-    document.getElementById('pi-kab').textContent    = I.kabupaten       || '–';
-    document.getElementById('pi-prov').textContent   = I.provinsi        || '–';
-    document.getElementById('ft2-nama').textContent  = I.nama;
-    document.getElementById('ft2-alamat').textContent= I.alamat;
+    document.getElementById('pi-nama').textContent    = I.nama          || '–';
+    document.getElementById('pi-npsn').textContent    = I.npsn          || '(belum diisi)';
+    document.getElementById('pi-alamat').textContent  = I.alamat        || '–';
+    document.getElementById('pi-tahun').textContent   = I.tahun_berdiri || '(belum diisi)';
+    document.getElementById('pi-akred').textContent   = I.akreditasi    || '(belum diisi)';
+    document.getElementById('pi-status').textContent  = I.status        || '–';
+    document.getElementById('pi-telp').textContent    = I.telp          || '(belum diisi)';
+    document.getElementById('pi-email').textContent   = I.email         || '(belum diisi)';
+    document.getElementById('pi-kec').textContent     = I.kecamatan     || '–';
+    document.getElementById('pi-kab').textContent     = I.kabupaten     || '–';
+    document.getElementById('pi-prov').textContent    = I.provinsi      || '–';
+    document.getElementById('ft2-nama').textContent   = I.nama;
+    document.getElementById('ft2-alamat').textContent = I.alamat;
 
     document.getElementById('pi-visi').textContent = VISI;
-
     document.getElementById('pi-misi').innerHTML = MISI.map((m, i) =>
       `<li><span class="misi-n">${i+1}</span><span>${m}</span></li>`
     ).join('');
-
     document.getElementById('pi-sejarah').textContent = SEJARAH;
 
     document.getElementById('ann-body').innerHTML = PENGUMUMAN.map(p => {
       const parts = p.tanggal.split(' ');
       return `<div class="ann-item">
-        <div class="ann-date"><div class="d">${parts[0]}</div><div class="m">${parts[1] || ''}</div></div>
+        <div class="ann-date"><div class="d">${parts[0]}</div><div class="m">${parts[1]||''}</div></div>
         <div class="ann-text"><h4>${p.judul}</h4><p>${p.isi}</p></div>
       </div>`;
     }).join('');
@@ -449,8 +471,15 @@
   function fillGuru() {
     document.getElementById('guru-grid').innerHTML = GURU.map(g => {
       const init = g.nama.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+
+      // Kalau ada field foto dan tidak kosong → tampilkan foto
+      // Kalau tidak ada atau kosong → tampilkan inisial
+      const avatar = (g.foto && g.foto.trim() !== '')
+        ? `<div class="guru-foto-wrap"><img class="guru-foto" src="${g.foto}" alt="${g.nama}" onerror="this.parentElement.outerHTML='<div class=\\"guru-av\\">${init}</div>'"/></div>`
+        : `<div class="guru-av">${init}</div>`;
+
       return `<div class="guru-card">
-        <div class="guru-av">${init}</div>
+        ${avatar}
         <h4>${g.nama}</h4>
         <p>${g.jabatan}</p>
       </div>`;
@@ -458,7 +487,7 @@
   }
 
   function fillAlumniFilters() {
-    const years = [...new Set(ALUMNI.map(a => a.tahun))].sort((a, b) => b - a);
+    const years = [...new Set(ALUMNI.map(a => a.tahun))].sort((a,b) => b-a);
     const smps  = [...new Set(ALUMNI.map(a => a.smp))].sort();
     years.forEach(y => { document.getElementById('al-year').innerHTML += `<option value="${y}">Angkatan ${y}</option>`; });
     smps.forEach(s  => { document.getElementById('al-smp').innerHTML  += `<option value="${s}">${s}</option>`; });
