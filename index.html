@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SD Negeri Banjarsari – Sidoarjo</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FFF8F0;
+      --gold: #C08552;
+      --gold-light: #D9A87A;
+      --gold-pale: #F0DEC8;
+      --brown: #8C5A3C;
+      --dark: #4B2E2B;
+      --soft: #6b4c3b;
+      --white: #FFFFFF;
+      --s1: 0 2px 12px rgba(75,46,43,.08);
+      --s2: 0 6px 28px rgba(75,46,43,.13);
+      --r: 14px;
+      --t: .25s cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); min-height: 100vh; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* ── NAVBAR ── */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--dark); height: 64px; display: flex; align-items: center; box-shadow: 0 2px 20px rgba(75,46,43,.3); }
+    .nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; width: 100%; display: flex; align-items: center; gap: 1rem; }
+    .nav-brand { display: flex; align-items: center; gap: .75rem; cursor: pointer; flex-shrink: 0; }
+    .nav-logo { width: 38px; height: 38px; object-fit: contain; background: var(--cream); border-radius: 8px; padding: 3px; }
+    .nav-logo-fb { width: 38px; height: 38px; background: var(--gold); border-radius: 8px; display: none; align-items: center; justify-content: center; font-family: 'Lora', serif; font-size: .95rem; color: var(--dark); font-weight: 700; }
+    .nav-title { font-family: 'Lora', serif; color: var(--cream); font-size: .95rem; font-weight: 600; line-height: 1.15; }
+    .nav-title small { display: block; font-family: 'DM Sans', sans-serif; font-size: .65rem; font-weight: 400; color: var(--gold-light); letter-spacing: .06em; }
+    .nav-links { margin-left: auto; display: flex; gap: .15rem; }
+    .nav-links button { background: none; border: none; color: rgba(255,248,240,.65); font-size: .82rem; font-weight: 500; padding: .45rem .85rem; border-radius: 8px; cursor: pointer; transition: var(--t); }
+    .nav-links button:hover { background: rgba(255,255,255,.08); color: var(--cream); }
+    .nav-links button.active { background: var(--gold); color: var(--dark); font-weight: 600; }
+    .hamburger { display: none; margin-left: auto; background: none; border: none; cursor: pointer; padding: .4rem; color: var(--cream); align-items: center; }
+    .mob-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--dark); z-index: 999; padding: .75rem 1.5rem 1rem; border-top: 1px solid rgba(255,255,255,.08); flex-direction: column; gap: .25rem; }
+    .mob-menu.open { display: flex; }
+    .mob-menu button { background: none; border: none; color: rgba(255,248,240,.75); font-size: .9rem; font-weight: 500; padding: .7rem .5rem; text-align: left; cursor: pointer; border-radius: 8px; transition: var(--t); }
+    .mob-menu button.active { color: var(--gold); font-weight: 600; }
+
+    /* ── PAGES ── */
+    .page { display: none; padding-top: 64px; min-height: 100vh; }
+    .page.active { display: block; }
+
+    /* ── HERO ── */
+    .hero { background: linear-gradient(150deg, var(--dark) 0%, #6b3a2a 55%, var(--gold) 100%); padding: 5rem 1.5rem 4.5rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 80%, rgba(192,133,82,.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(192,133,82,.1) 0%, transparent 50%); }
+    .hero-pat { position: absolute; inset: 0; opacity: .04; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C08552' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='40' cy='0' r='2'/%3E%3Ccircle cx='0' cy='40' r='2'/%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-logo { width: 96px; height: 96px; object-fit: contain; border-radius: 18px; background: rgba(255,248,240,.12); padding: 8px; box-shadow: 0 8px 32px rgba(0,0,0,.25); margin: 0 auto 1.5rem; position: relative; }
+    .hero-logo-fb { width: 96px; height: 96px; background: rgba(255,248,240,.15); border-radius: 18px; display: none; align-items: center; justify-content: center; font-family: 'Lora', serif; font-size: 2rem; color: var(--cream); font-weight: 700; box-shadow: 0 8px 32px rgba(0,0,0,.2); margin: 0 auto 1.5rem; }
+    .hero-badge { display: inline-block; background: rgba(192,133,82,.25); border: 1px solid rgba(192,133,82,.5); color: var(--gold-light); font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: .35rem 1.1rem; border-radius: 100px; margin-bottom: 1rem; position: relative; }
+    .hero h1 { font-family: 'Lora', serif; font-size: clamp(2rem,5.5vw,3.5rem); color: var(--cream); line-height: 1.15; position: relative; margin-bottom: .75rem; }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-sub { color: rgba(255,248,240,.7); font-size: 1rem; position: relative; max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.65; }
+
+    /* Alamat — bisa diklik ke Google Maps */
+    .hero-addr {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,248,240,.6); font-size: .78rem; padding: .45rem 1rem;
+      border-radius: 100px; position: relative;
+      text-decoration: none; cursor: pointer;
+      transition: var(--t);
+    }
+    .hero-addr:hover { background: rgba(255,255,255,.14); color: rgba(255,248,240,.9); border-color: rgba(255,255,255,.25); }
+
+    .hero-cta { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.75rem; position: relative; }
+    .btn-p { background: var(--gold); color: var(--dark); border: none; padding: .75rem 1.75rem; border-radius: 10px; font-size: .88rem; font-weight: 700; cursor: pointer; transition: var(--t); box-shadow: 0 4px 16px rgba(192,133,82,.4); }
+    .btn-p:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-o { background: transparent; color: var(--cream); border: 2px solid rgba(255,248,240,.3); padding: .75rem 1.75rem; border-radius: 10px; font-size: .88rem; font-weight: 600; cursor: pointer; transition: var(--t); }
+    .btn-o:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+    /* ── STATS ── */
+    .stats-strip { background: var(--gold); padding: 1.1rem 1.5rem; }
+    .stats-inner { max-width: 1140px; margin: 0 auto; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .stat { text-align: center; color: var(--dark); padding: 0 1.5rem; border-right: 1px solid rgba(75,46,43,.2); }
+    .stat:last-child { border-right: none; }
+    .stat-n { font-family: 'Lora', serif; font-size: 1.7rem; font-weight: 700; line-height: 1; }
+    .stat-l { font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .7; margin-top: .2rem; }
+
+    /* ── SECTION ── */
+    .sec { max-width: 1140px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .sec-lbl { font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+    .sec-title { font-family: 'Lora', serif; font-size: clamp(1.6rem,3vw,2.2rem); color: var(--dark); line-height: 1.25; margin-bottom: 1rem; }
+    .sec-desc { color: var(--soft); font-size: .92rem; line-height: 1.7; max-width: 520px; }
+
+    /* ── FEATURE CARDS ── */
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    .feat-card { background: var(--white); border-radius: var(--r); padding: 1.6rem; border: 1px solid rgba(192,133,82,.15); box-shadow: var(--s1); transition: var(--t); cursor: pointer; position: relative; overflow: hidden; }
+    .feat-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--brown)); transform: scaleX(0); transform-origin: left; transition: var(--t); }
+    .feat-card:hover { transform: translateY(-4px); box-shadow: var(--s2); }
+    .feat-card:hover::after { transform: scaleX(1); }
+    .feat-icon { width: 48px; height: 48px; background: var(--gold-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+    .feat-card h3 { font-family: 'Lora', serif; font-size: 1.05rem; margin-bottom: .4rem; }
+    .feat-card p { font-size: .82rem; color: var(--soft); line-height: 1.6; }
+
+    /* ── PENGUMUMAN ── */
+    .ann-wrap { background: var(--white); border-radius: var(--r); border: 1px solid rgba(192,133,82,.2); overflow: hidden; margin-top: 2.5rem; box-shadow: var(--s1); }
+    .ann-head { background: var(--dark); padding: 1rem 1.5rem; display: flex; align-items: center; gap: .6rem; }
+    .ann-head span { font-family: 'Lora', serif; color: var(--cream); font-size: 1rem; }
+    .ann-body { padding: 1.5rem; }
+    .ann-item { display: flex; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(192,133,82,.12); align-items: flex-start; }
+    .ann-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .ann-date { min-width: 50px; text-align: center; background: var(--gold-pale); border-radius: 8px; padding: .3rem .5rem; }
+    .ann-date .d { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: var(--dark); line-height: 1; }
+    .ann-date .m { font-size: .65rem; font-weight: 600; color: var(--brown); text-transform: uppercase; }
+    .ann-text h4 { font-size: .88rem; font-weight: 600; margin-bottom: .2rem; }
+    .ann-text p { font-size: .78rem; color: var(--soft); line-height: 1.55; }
+
+    /* ── PAGE HERO ── */
+    .pg-hero { background: linear-gradient(135deg, var(--dark) 0%, var(--brown) 100%); padding: 3.5rem 1.5rem 3rem; text-align: center; }
+    .pg-hero h1 { font-family: 'Lora', serif; color: var(--cream); font-size: clamp(1.6rem,4vw,2.5rem); }
+    .pg-hero p { color: var(--gold-light); margin-top: .5rem; font-size: .88rem; }
+
+    /* ── PROFIL ── */
+    .profil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .p-card { background: var(--white); border-radius: var(--r); padding: 1.75rem; border: 1px solid rgba(192,133,82,.15); box-shadow: var(--s1); }
+    .p-card.full { grid-column: 1 / -1; }
+    .p-card h3 { font-family: 'Lora', serif; font-size: 1.1rem; margin-bottom: 1rem; padding-bottom: .75rem; border-bottom: 2px solid var(--gold-pale); }
+    .info-row { display: flex; gap: .5rem; margin-bottom: .65rem; font-size: .85rem; }
+    .info-row .lbl { color: var(--brown); font-weight: 600; min-width: 130px; flex-shrink: 0; }
+    .visi-box { font-family: 'Lora', serif; font-size: 1rem; font-style: italic; color: var(--dark); line-height: 1.75; padding: 1rem 1.25rem; background: var(--cream); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; }
+    .misi-list { list-style: none; padding: 0; }
+    .misi-list li { display: flex; gap: .75rem; padding: .6rem 0; border-bottom: 1px solid rgba(192,133,82,.1); font-size: .86rem; line-height: 1.6; }
+    .misi-list li:last-child { border-bottom: none; }
+    .misi-n { min-width: 24px; height: 24px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: var(--dark); flex-shrink: 0; margin-top: .1rem; }
+
+    /* ── GURU CARDS ── */
+    .guru-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px,1fr)); gap: 1rem; margin-top: 2rem; }
+    .guru-card { background: var(--white); border-radius: var(--r); padding: 1.25rem; text-align: center; border: 1px solid rgba(192,133,82,.15); box-shadow: var(--s1); transition: var(--t); }
+    .guru-card:hover { transform: translateY(-3px); box-shadow: var(--s2); }
+
+    /* foto bulat */
+    .guru-foto-wrap { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto .85rem; overflow: hidden; border: 3px solid var(--gold-pale); flex-shrink: 0; }
+    .guru-foto { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* fallback inisial (muncul kalau foto tidak ada) */
+    .guru-av { width: 72px; height: 72px; background: var(--gold-pale); border-radius: 50%; margin: 0 auto .85rem; display: flex; align-items: center; justify-content: center; font-family: 'Lora', serif; font-size: 1.3rem; color: var(--brown); font-weight: 700; border: 3px solid var(--gold-pale); }
+
+    .guru-card h4 { font-size: .84rem; font-weight: 600; margin-bottom: .25rem; color: var(--dark); }
+    .guru-card p { font-size: .74rem; color: var(--brown); }
+
+    /* ── ALUMNI ── */
+    .al-wrap { max-width: 1140px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .al-ctrl { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: center; }
+    .srch-wrap { flex: 1; min-width: 200px; position: relative; }
+    .srch-wrap svg { position: absolute; left: .75rem; top: 50%; transform: translateY(-50%); color: var(--brown); pointer-events: none; }
+    .srch-inp { width: 100%; padding: .65rem 1rem .65rem 2.5rem; border: 2px solid rgba(140,90,60,.18); border-radius: 10px; font-size: .86rem; color: var(--dark); background: white; outline: none; transition: border-color .2s; }
+    .srch-inp:focus { border-color: var(--gold); }
+    .fil-sel { padding: .65rem 2rem .65rem .85rem; border: 2px solid rgba(140,90,60,.18); border-radius: 10px; font-size: .82rem; font-weight: 600; color: var(--brown); background: white; cursor: pointer; outline: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238C5A3C' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .6rem center; }
+    .fil-sel:focus { border-color: var(--gold); }
+    .al-pills { display: flex; gap: .75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .al-pill { background: white; border: 1px solid rgba(192,133,82,.2); border-radius: 100px; padding: .35rem .9rem; font-size: .78rem; font-weight: 600; color: var(--brown); }
+    .al-pill strong { color: var(--dark); }
+    .al-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.1rem; }
+    .al-card { background: white; border-radius: var(--r); padding: 1.35rem 1.4rem; border: 1px solid rgba(192,133,82,.15); box-shadow: var(--s1); transition: var(--t); position: relative; overflow: hidden; }
+    .al-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--brown)); }
+    .al-card:hover { transform: translateY(-3px); box-shadow: var(--s2); }
+    .al-yr { display: inline-block; background: var(--gold-pale); color: var(--brown); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 4px; margin-bottom: .5rem; }
+    .al-name { font-family: 'Lora', serif; font-size: 1.05rem; color: var(--dark); margin-bottom: .55rem; }
+    .al-smp { display: inline-flex; align-items: center; gap: .3rem; font-size: .78rem; font-weight: 600; color: var(--brown); background: rgba(192,133,82,.1); padding: .28rem .65rem; border-radius: 6px; margin-bottom: .75rem; }
+    .al-prest { border-top: 1px solid rgba(192,133,82,.12); padding-top: .65rem; display: flex; flex-wrap: wrap; gap: .3rem; }
+    .prest-tag { background: rgba(140,90,60,.08); color: var(--soft); font-size: .72rem; padding: .2rem .5rem; border-radius: 4px; }
+    .no-data { grid-column: 1/-1; text-align: center; padding: 4rem 2rem; color: var(--brown); }
+    .no-data svg { margin: 0 auto 1rem; opacity: .35; }
+    .no-data h4 { font-family: 'Lora', serif; font-size: 1.1rem; margin-bottom: .3rem; }
+    .no-data p { font-size: .82rem; opacity: .7; }
+
+    /* ── POPUP ── */
+    .popup-overlay { display: none; position: fixed; inset: 0; background: rgba(75,46,43,.55); z-index: 9998; }
+    .popup-overlay.show { display: block; }
+    .popup-box { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 9999; background: var(--cream); border-radius: 20px; padding: 2.5rem 2rem; max-width: 360px; width: 90%; text-align: center; box-shadow: 0 24px 64px rgba(75,46,43,.35); }
+    .popup-box.show { display: block; }
+    .popup-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .popup-title { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--dark); margin-bottom: .6rem; }
+    .popup-desc { font-size: .85rem; color: var(--soft); line-height: 1.65; margin-bottom: 1.75rem; }
+    .popup-btn { background: var(--dark); color: var(--cream); border: none; padding: .75rem 2rem; border-radius: 10px; font-size: .88rem; font-weight: 600; cursor: pointer; transition: var(--t); }
+    .popup-btn:hover { background: var(--brown); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); color: rgba(255,248,240,.45); padding: 2.5rem 1.5rem; text-align: center; font-size: .78rem; line-height: 1.8; }
+    footer strong { color: var(--gold-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .profil-grid { grid-template-columns: 1fr; }
+      .p-card.full { grid-column: 1; }
+    }
+    @media (max-width: 500px) {
+      .stat { padding: 0 .75rem; }
+      .stat-n { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="showPage('beranda')">
+      <img src="logo.png" alt="Logo" class="nav-logo" onerror="this.style.display='none';document.getElementById('nfb').style.display='flex';" />
+      <div class="nav-logo-fb" id="nfb">SD</div>
+      <div class="nav-title">SDN Banjarsari<small>Kab. Sidoarjo, Jawa Timur</small></div>
+    </div>
+    <div class="nav-links">
+      <button onclick="showPage('beranda')" id="nav-beranda" class="active">🏠 Beranda</button>
+      <button onclick="showPage('profil')"  id="nav-profil">📋 Profil Sekolah</button>
+      <button onclick="bukaPendaftaran()">📝 Pendaftaran</button>
+      <button onclick="showPage('alumni')"  id="nav-alumni">🎓 Alumni</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mob-menu">
+  <button onclick="showPage('beranda');toggleMenu()">🏠 Beranda</button>
+  <button onclick="showPage('profil');toggleMenu()">📋 Profil Sekolah</button>
+  <button onclick="bukaPendaftaran();toggleMenu()">📝 Pendaftaran</button>
+  <button onclick="showPage('alumni');toggleMenu()">🎓 Alumni</button>
+</div>
+
+<!-- POPUP PENDAFTARAN -->
+<div class="popup-overlay" id="popup-overlay" onclick="tutupPopup()"></div>
+<div class="popup-box" id="popup-box">
+  <div class="popup-icon">📋</div>
+  <div class="popup-title">Pendaftaran Belum Dibuka</div>
+  <p class="popup-desc">Formulir pendaftaran online belum tersedia saat ini atau sudah ditutup. Silakan hubungi pihak sekolah untuk informasi lebih lanjut.</p>
+  <button class="popup-btn" onclick="tutupPopup()">Oke, Mengerti</button>
+</div>
+
+
+<!-- ══ PAGE: BERANDA ══ -->
+<div class="page active" id="page-beranda">
+  <section class="hero">
+    <div class="hero-pat"></div>
+    <img src="logo.png" alt="Logo" class="hero-logo" onerror="this.style.display='none';document.getElementById('hfb').style.display='flex';" />
+    <div class="hero-logo-fb" id="hfb">SDN</div>
+    <div class="hero-badge">Sekolah Dasar Negeri</div>
+    <h1>Selamat Datang di<br/><em id="hero-nama">SDN Banjarsari</em></h1>
+    <p class="hero-sub">Membentuk generasi yang cerdas, berkarakter, dan berdaya saing di lingkungan yang penuh kasih.</p>
+
+    <!-- Alamat — klik buka Google Maps -->
+    <a class="hero-addr" href="https://maps.app.goo.gl/Lksod7Zqxxc5s6NcA" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span id="hero-alamat">Banjarsari, Kec. Buduran, Kabupaten Sidoarjo, Jawa Timur</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.6"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+
+    <div class="hero-cta">
+      <button class="btn-p" onclick="bukaPendaftaran()">📝 Daftar Sekarang</button>
+      <button class="btn-o" onclick="showPage('profil')">Profil Sekolah →</button>
+    </div>
+  </section>
+
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat"><div class="stat-n" id="s-alumni">–</div><div class="stat-l">Total Alumni</div></div>
+      <div class="stat"><div class="stat-n" id="s-angkatan">–</div><div class="stat-l">Angkatan</div></div>
+      <div class="stat"><div class="stat-n" id="s-smp">–</div><div class="stat-l">SMP Tujuan</div></div>
+      <div class="stat"><div class="stat-n" id="s-akred">–</div><div class="stat-l">Akreditasi</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-lbl">Layanan Kami</div>
+    <h2 class="sec-title">Apa yang Bisa Kamu<br/>Temukan di Sini?</h2>
+    <p class="sec-desc">Website resmi SDN Banjarsari menyediakan informasi sekolah, pendaftaran siswa baru, dan data alumni.</p>
+    <div class="feat-grid">
+      <div class="feat-card" onclick="showPage('profil')">
+        <div class="feat-icon">📋</div>
+        <h3>Profil Sekolah</h3>
+        <p>Visi, misi, sejarah, dan informasi lengkap beserta tenaga pengajar SDN Banjarsari.</p>
+      </div>
+      <div class="feat-card" onclick="bukaPendaftaran()">
+        <div class="feat-icon">📝</div>
+        <h3>Pendaftaran Online</h3>
+        <p>Daftarkan putra-putri Anda secara online dengan mudah tanpa perlu datang langsung.</p>
+      </div>
+      <div class="feat-card" onclick="showPage('alumni')">
+        <div class="feat-icon">🎓</div>
+        <h3>Data Alumni</h3>
+        <p>Cari data alumni — lulus tahun berapa, melanjutkan ke SMP mana, dan prestasi yang diraih.</p>
+      </div>
+      <div class="feat-card" onclick="showPage('profil')">
+        <div class="feat-icon">🏫</div>
+        <h3>Info Sekolah</h3>
+        <p>Alamat, kontak, dan informasi penting lainnya tentang sekolah kami.</p>
+      </div>
+    </div>
+
+    <div class="ann-wrap">
+      <div class="ann-head">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C08552" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span>Pengumuman Terbaru</span>
+      </div>
+      <div class="ann-body" id="ann-body"></div>
+    </div>
+  </div>
+  <footer>
+    <strong id="ft-nama">SD Negeri Banjarsari</strong><br/>
+    <span id="ft-alamat">Banjarsari, Kec. Buduran, Kabupaten Sidoarjo, Jawa Timur 61252</span><br/><br/>
+    © <span class="yr-f"></span> SDN Banjarsari.
+  </footer>
+</div>
+
+
+<!-- ══ PAGE: PROFIL ══ -->
+<div class="page" id="page-profil">
+  <div class="pg-hero"><h1>Profil Sekolah</h1><p>Mengenal lebih dekat SD Negeri Banjarsari</p></div>
+  <div class="sec">
+    <div class="profil-grid">
+      <div class="p-card">
+        <h3>🏫 Informasi Umum</h3>
+        <div class="info-row"><span class="lbl">Nama Sekolah</span><span id="pi-nama">–</span></div>
+        <div class="info-row"><span class="lbl">NPSN</span><span id="pi-npsn">–</span></div>
+        <div class="info-row"><span class="lbl">Alamat</span><span id="pi-alamat">–</span></div>
+        <div class="info-row"><span class="lbl">Tahun Berdiri</span><span id="pi-tahun">–</span></div>
+        <div class="info-row"><span class="lbl">Akreditasi</span><span id="pi-akred">–</span></div>
+        <div class="info-row"><span class="lbl">Status</span><span id="pi-status">–</span></div>
+      </div>
+      <div class="p-card">
+        <h3>📞 Kontak</h3>
+        <div class="info-row"><span class="lbl">Telepon/WA</span><span id="pi-telp">–</span></div>
+        <div class="info-row"><span class="lbl">Email</span><span id="pi-email">–</span></div>
+        <div class="info-row"><span class="lbl">Kecamatan</span><span id="pi-kec">–</span></div>
+        <div class="info-row"><span class="lbl">Kabupaten</span><span id="pi-kab">–</span></div>
+        <div class="info-row"><span class="lbl">Provinsi</span><span id="pi-prov">–</span></div>
+      </div>
+      <div class="p-card full"><h3>🌟 Visi</h3><div class="visi-box" id="pi-visi">–</div></div>
+      <div class="p-card full"><h3>🎯 Misi</h3><ul class="misi-list" id="pi-misi"></ul></div>
+      <div class="p-card full"><h3>📜 Sejarah Singkat</h3><p id="pi-sejarah" style="font-size:.87rem;line-height:1.75;color:var(--soft)">–</p></div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <div class="sec-lbl">Sumber Daya Manusia</div>
+      <h2 class="sec-title">Guru & Tenaga Kependidikan</h2>
+      <div class="guru-grid" id="guru-grid"></div>
+    </div>
+  </div>
+  <footer>
+    <strong id="ft2-nama">SD Negeri Banjarsari</strong><br/>
+    <span id="ft2-alamat"></span><br/><br/>
+    © <span class="yr-f"></span> SDN Banjarsari.
+  </footer>
+</div>
+
+
+<!-- ══ PAGE: ALUMNI ══ -->
+<div class="page" id="page-alumni">
+  <div class="pg-hero"><h1>Data Alumni</h1><p>Jejak langkah lulusan SDN Banjarsari</p></div>
+  <div class="al-wrap">
+    <div class="al-ctrl">
+      <div class="srch-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" class="srch-inp" id="al-search" placeholder="Cari nama alumni..." oninput="renderAlumni()" />
+      </div>
+      <select class="fil-sel" id="al-year" onchange="renderAlumni()"><option value="">Semua Angkatan</option></select>
+      <select class="fil-sel" id="al-smp"  onchange="renderAlumni()"><option value="">Semua SMP</option></select>
+    </div>
+    <div class="al-pills" id="al-pills"></div>
+    <div class="al-grid"  id="al-grid"></div>
+  </div>
+  <footer>
+    <strong>SD Negeri Banjarsari</strong><br/><br/>
+    © <span class="yr-f"></span> SDN Banjarsari.
+  </footer>
+</div>
+
+
+<!-- DATA FILES -->
+<script src="data/info.js"></script>
+<script src="data/guru.js"></script>
+<script src="data/alumni.js"></script>
+
+<script>
+  // ════════════════════════════════════════════════
+  // LINK PENDAFTARAN
+  // Ada link → langsung redirect ke link tersebut
+  // Kosong (null) → muncul popup "belum dibuka"
+  // ════════════════════════════════════════════════
+  const LINK_PENDAFTARAN = null;
+  // Contoh kalau ada link:
+  // const LINK_PENDAFTARAN = "https://ppdb.sidoarjokab.go.id/...";
+
+  // ════════════════════════════════════════════════
+  // JANGAN EDIT DI BAWAH INI
+  // ════════════════════════════════════════════════
+
+  function bukaPendaftaran() {
+    if (LINK_PENDAFTARAN) {
+      window.open(LINK_PENDAFTARAN, '_blank');
+    } else {
+      document.getElementById('popup-overlay').classList.add('show');
+      document.getElementById('popup-box').classList.add('show');
+    }
+  }
+
+  function tutupPopup() {
+    document.getElementById('popup-overlay').classList.remove('show');
+    document.getElementById('popup-box').classList.remove('show');
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') tutupPopup(); });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.yr-f').forEach(el => el.textContent = new Date().getFullYear());
+    fillInfo();
+    fillGuru();
+    fillAlumniFilters();
+    renderAlumni();
+  });
+
+  function fillInfo() {
+    const I = INFO_SEKOLAH;
+    document.getElementById('hero-nama').textContent    = I.nama;
+    document.getElementById('hero-alamat').textContent  = I.alamat;
+    document.getElementById('s-akred').textContent      = I.akreditasi || '–';
+    document.getElementById('ft-nama').textContent      = I.nama;
+    document.getElementById('ft-alamat').textContent    = I.alamat;
+
+    const years = [...new Set(ALUMNI.map(a => a.tahun))];
+    const smps  = [...new Set(ALUMNI.map(a => a.smp))];
+    document.getElementById('s-alumni').textContent    = ALUMNI.length;
+    document.getElementById('s-angkatan').textContent  = years.length;
+    document.getElementById('s-smp').textContent       = smps.length;
+
+    document.getElementById('pi-nama').textContent    = I.nama          || '–';
+    document.getElementById('pi-npsn').textContent    = I.npsn          || '(belum diisi)';
+    document.getElementById('pi-alamat').textContent  = I.alamat        || '–';
+    document.getElementById('pi-tahun').textContent   = I.tahun_berdiri || '(belum diisi)';
+    document.getElementById('pi-akred').textContent   = I.akreditasi    || '(belum diisi)';
+    document.getElementById('pi-status').textContent  = I.status        || '–';
+    document.getElementById('pi-telp').textContent    = I.telp          || '(belum diisi)';
+    document.getElementById('pi-email').textContent   = I.email         || '(belum diisi)';
+    document.getElementById('pi-kec').textContent     = I.kecamatan     || '–';
+    document.getElementById('pi-kab').textContent     = I.kabupaten     || '–';
+    document.getElementById('pi-prov').textContent    = I.provinsi      || '–';
+    document.getElementById('ft2-nama').textContent   = I.nama;
+    document.getElementById('ft2-alamat').textContent = I.alamat;
+
+    document.getElementById('pi-visi').textContent = VISI;
+    document.getElementById('pi-misi').innerHTML = MISI.map((m, i) =>
+      `<li><span class="misi-n">${i+1}</span><span>${m}</span></li>`
+    ).join('');
+    document.getElementById('pi-sejarah').textContent = SEJARAH;
+
+    document.getElementById('ann-body').innerHTML = PENGUMUMAN.map(p => {
+      const parts = p.tanggal.split(' ');
+      return `<div class="ann-item">
+        <div class="ann-date"><div class="d">${parts[0]}</div><div class="m">${parts[1]||''}</div></div>
+        <div class="ann-text"><h4>${p.judul}</h4><p>${p.isi}</p></div>
+      </div>`;
+    }).join('');
+  }
+
+  function fillGuru() {
+    document.getElementById('guru-grid').innerHTML = GURU.map(g => {
+      const init = g.nama.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+
+      // Kalau ada field foto dan tidak kosong → tampilkan foto
+      // Kalau tidak ada atau kosong → tampilkan inisial
+      const avatar = (g.foto && g.foto.trim() !== '')
+        ? `<div class="guru-foto-wrap"><img class="guru-foto" src="${g.foto}" alt="${g.nama}" onerror="this.parentElement.outerHTML='<div class=\\"guru-av\\">${init}</div>'"/></div>`
+        : `<div class="guru-av">${init}</div>`;
+
+      return `<div class="guru-card">
+        ${avatar}
+        <h4>${g.nama}</h4>
+        <p>${g.jabatan}</p>
+      </div>`;
+    }).join('');
+  }
+
+  function fillAlumniFilters() {
+    const years = [...new Set(ALUMNI.map(a => a.tahun))].sort((a,b) => b-a);
+    const smps  = [...new Set(ALUMNI.map(a => a.smp))].sort();
+    years.forEach(y => { document.getElementById('al-year').innerHTML += `<option value="${y}">Angkatan ${y}</option>`; });
+    smps.forEach(s  => { document.getElementById('al-smp').innerHTML  += `<option value="${s}">${s}</option>`; });
+  }
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    const nb = document.getElementById('nav-' + name);
+    if (nb) nb.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleMenu() {
+    document.getElementById('mob-menu').classList.toggle('open');
+  }
+
+  function renderAlumni() {
+    const q   = document.getElementById('al-search').value.toLowerCase();
+    const yr  = document.getElementById('al-year').value;
+    const smp = document.getElementById('al-smp').value;
+    const f   = ALUMNI.filter(a =>
+      (!q   || a.nama.toLowerCase().includes(q)) &&
+      (!yr  || a.tahun == yr) &&
+      (!smp || a.smp === smp)
+    );
+    document.getElementById('al-pills').innerHTML =
+      `<div class="al-pill"><strong>${f.length}</strong> alumni ditampilkan</div>` +
+      (f.length < ALUMNI.length ? `<div class="al-pill">dari <strong>${ALUMNI.length}</strong> total</div>` : '');
+    const grid = document.getElementById('al-grid');
+    if (!f.length) {
+      grid.innerHTML = `<div class="no-data">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <h4>Tidak ditemukan</h4><p>Coba ubah kata kunci atau filter</p>
+      </div>`;
+      return;
+    }
+    grid.innerHTML = f.map(a => `
+      <div class="al-card">
+        <div class="al-yr">Lulus ${a.tahun}</div>
+        <div class="al-name">${a.nama}</div>
+        <div class="al-smp">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          ${a.smp}
+        </div>
+        ${a.prestasi.length ? `<div class="al-prest">${a.prestasi.map(p => `<span class="prest-tag">🏅 ${p}</span>`).join('')}</div>` : ''}
+      </div>`).join('');
+  }
+</script>
+</body>
+</html>
