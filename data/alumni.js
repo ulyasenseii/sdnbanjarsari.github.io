@@ -35,7 +35,7 @@ const ALUMNI = [
   // ── ANGKATAN 2021 ─────────────────────────────────
   { nama: "Nurul Hidayah",    tahun: 2021, smp: "SMP Negeri 3 Sidoarjo", prestasi: ["Juara 1 Olimpiade Bahasa Indonesia"] },
   // ── Angkatan anomali ─────────────────────────────────
-   { nama: "cacaa", tahun: 2025, smp: "SMP 1 buduran", prestasi: ["vdd"] },
+  { nama: "cacaa", tahun: 2025, smp: "SMP 1 buduran", prestasi: ["vdd"] },
   { nama: "ilham", tahun: 2025, smp: "SMP 1 buduran", prestasi: ["dvsd"] },
   { nama: "oden", tahun: 2025, smp: "SMP 1 buduran", prestasi: ["dsdf"] },
   { nama: "dvsd", tahun: 2025, smp: "smp 1 sidaoarj", prestasi: ["fdsdf"] },
