@@ -19,8 +19,8 @@ const INFO_SEKOLAH = {
 };
 
 const VISI =
-  "Terwujudnya insan yang beriman, bertaqwa, berakhlak mulia, cerdas, terampil, " +
-  "dan berwawasan luas demi terciptanya generasi penerus bangsa yang berkualitas.";
+  "Terwujudnya generasi yang beriman dan bertaqwa, berkarakter, berilmu serta peduli lingkungan, " +
+  ;
 
 const MISI = [
   "Melaksanakan pembelajaran dan bimbingan secara efektif sehingga setiap siswa berkembang optimal sesuai potensinya.",
@@ -42,17 +42,17 @@ const SEJARAH =
 const PENGUMUMAN = [
   {
     tanggal: "01 Jul",
-    judul:   "Penerimaan Peserta Didik Baru (PPDB) 2025/2026",
-    isi:     "Pendaftaran siswa baru untuk tahun ajaran 2025/2026 telah dibuka. Segera daftarkan putra-putri Anda!",
+    judul:   "Penerimaan Peserta Didik Baru (PPDB) 2026/2027",
+    isi:     "Pendaftaran siswa baru untuk tahun ajaran 2026/2027 akan dibuka. Segera persiapkan pendaftaran putra-putri Anda!",
   },
   {
     tanggal: "15 Jun",
-    judul:   "Pengumuman Kenaikan Kelas",
-    isi:     "Hasil keputusan kenaikan kelas tahun ajaran 2024/2025 telah ditetapkan. Hubungi wali kelas masing-masing.",
+    judul:   "Prediksi Pengumuman Kenaikan Kelas",
+    isi:     "Hasil keputusan kenaikan kelas tahun ajaran 2025/2026 akan ditetapkan. Hubungi wali kelas masing-masing.",
   },
   {
     tanggal: "10 Jun",
-    judul:   "Pelepasan Siswa Kelas 6",
-    isi:     "Selamat kepada seluruh siswa kelas 6 yang telah menyelesaikan pendidikan di SDN Banjarsari!",
+    judul:   "Prediksi Pelepasan Siswa Kelas 6",
+    isi:     "Bagi siswa kelas 6 yang telah menyelesaikan pendidikan di SDN Banjarsari!",
   },
 ];
